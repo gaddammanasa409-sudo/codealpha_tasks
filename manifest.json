@@ -1,0 +1,10 @@
+{
+    "name": "Random Quote App",
+    "short_name": "Quotes",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f8fbff",
+    "theme_color": "#7655e8",
+    "description": "A beautiful Random Quote Generator",
+    "icons": []
+}

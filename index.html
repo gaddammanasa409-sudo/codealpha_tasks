@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Random Quote App</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background: linear-gradient(135deg,
+                    #eee9ff,
+                    #f8fbff,
+                    #e9f5ff);
+
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #142957;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: #7655e8;
+        }
+
+        .subtitle {
+            font-size: 21px;
+            color: #52679c;
+            margin-bottom: 40px;
+        }
+
+        .quote-box {
+            background: white;
+            padding: 50px 45px;
+            border-radius: 25px;
+
+            box-shadow: 0 15px 40px rgba(80, 80, 150, 0.18);
+        }
+
+        .quote-symbol {
+            width: 70px;
+            height: 70px;
+
+            margin: -85px auto 25px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg,
+                    #829cff,
+                    #7655e8);
+
+            color: white;
+            font-size: 45px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #quote {
+            font-size: 28px;
+            line-height: 1.6;
+            color: #142957;
+            margin: 20px auto;
+            max-width: 750px;
+        }
+
+        #author {
+            font-size: 20px;
+            color: #7655e8;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: bold;
+
+            border: none;
+            border-radius: 30px;
+
+            background: linear-gradient(135deg,
+                    #5d8df5,
+                    #7b4de5);
+
+            color: white;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            margin-top: 35px;
+            color: #6675b8;
+            font-size: 20px;
+        }
+
+        .footer span {
+            font-size: 16px;
+        }
+
+        .decoration {
+            position: fixed;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: #dcd4ff;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .top-left {
+            top: -150px;
+            left: -120px;
+        }
+
+        .bottom-right {
+            bottom: -150px;
+            right: -120px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+            }
+
+            .quote-box {
+                padding: 35px 20px;
+            }
+
+            #quote {
+                font-size: 21px;
+            }
+
+            #author {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="decoration top-left"></div>
+    <div class="decoration bottom-right"></div>
+
+    <div class="container">
+
+        <h1>
+            Random <span>Quote</span> Generator
+        </h1>
+
+        <p class="subtitle">
+            Small quotes... Big thoughts... ♡
+        </p>
+
+        <div class="quote-box">
+
+            <div class="quote-symbol">❝</div>
+
+            <p id="quote">Loading quote...</p>
+
+            <p id="author"></p>
+
+            <button onclick="newQuote()">
+                ⟳ &nbsp; New Quote
+            </button>
+
+        </div>
+
+        <div class="footer">
+            ♡ ───────── ♡
+            <br>
+            <span>
+                Good Quotes &nbsp; • &nbsp; Better Days
+            </span>
+        </div>
+
+    </div>
+
+    <script>
+        const quotes = [
+            {
+                text: "The future depends on what you do today.",
+                author: "Mahatma Gandhi"
+            },
+            {
+                text: "Success is not final, failure is not fatal.",
+                author: "Winston Churchill"
+            },
+            {
+                text: "Believe you can and you're halfway there.",
+                author: "Theodore Roosevelt"
+            },
+            {
+                text: "It always seems impossible until it's done.",
+                author: "Nelson Mandela"
+            },
+            {
+                text: "Dream big and dare to fail.",
+                author: "Norman Vincent Peale"
+            },
+            {
+                text: "The only way to do great work is to love what you do.",
+                author: "Steve Jobs"
+            },
+            {
+                text: "Start where you are. Use what you have. Do what you can.",
+                author: "Arthur Ashe"
+            },
+            {
+                text: "Don't watch the clock; do what it does. Keep going.",
+                author: "Sam Levenson"
+            }
+        ];
+
+        function newQuote() {
+            const randomNumber =
+                Math.floor(Math.random() * quotes.length);
+
+            document.getElementById("quote").textContent =
+                '"' + quotes[randomNumber].text + '"';
+
+            document.getElementById("author").textContent =
+                "- " + quotes[randomNumber].author;
+        }
+
+        window.onload = newQuote;
+    </script>
+
+</body>
+
+</html>
